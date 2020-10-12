@@ -1,4 +1,6 @@
 """
+Problem 46: https://projecteuler.net/problem=46
+
 It was proposed by Christian Goldbach that every odd composite number can be
 written as the sum of a prime and twice a square.
 
@@ -15,7 +17,7 @@ What is the smallest odd composite that cannot be written as the sum of a
 prime and twice a square?
 """
 
-from typing import List
+from __future__ import annotations
 
 seive = [True] * 100001
 i = 2
@@ -43,7 +45,7 @@ def is_prime(n: int) -> bool:
 odd_composites = [num for num in range(3, len(seive), 2) if not is_prime(num)]
 
 
-def compute_nums(n: int) -> List[int]:
+def compute_nums(n: int) -> list[int]:
     """
     Returns a list of first n odd composite numbers which do
     not follow the conjecture.
@@ -84,5 +86,10 @@ def compute_nums(n: int) -> List[int]:
                 return list_nums
 
 
+def solution() -> int:
+    """Return the solution to the problem"""
+    return compute_nums(1)[0]
+
+
 if __name__ == "__main__":
-    print(f"{compute_nums(1) = }")
+    print(f"{solution() = }")
